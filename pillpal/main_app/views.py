@@ -18,3 +18,7 @@ def medications_index(request):
     medications = Medication.objects.all()
     return render(request, 'medications/index.html', {'medications': medications})
 
+def medications_detail(request, medication_id):
+    medication = Medication.objects.get(id=medication_id)
+    return render(request, 'medications/detail.html', {'medication': medication})
+
