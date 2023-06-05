@@ -21,7 +21,13 @@ def medications_index(request):
 def medications_detail(request, medication_id):
     medication = Medication.objects.get(id=medication_id)
     medicationintake_form = MedicationIntakeForm()
-    return render(request, 'medications/detail.html', {'medication': medication, 'medicationintake_form': medicationintake_form})
+  
+    context = {
+        'medication': medication,
+        'medicationintake_form': medicationintake_form,
+
+    }
+    return render(request, 'medications/detail.html', context)
 
 class MedicationCreate(CreateView):
     model = Medication
