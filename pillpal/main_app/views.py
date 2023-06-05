@@ -22,3 +22,7 @@ def medications_detail(request, medication_id):
     medication = Medication.objects.get(id=medication_id)
     return render(request, 'medications/detail.html', {'medication': medication})
 
+class MedicationsCreate(CreateView):
+    model = Medication
+    fields = '__all__'
+
