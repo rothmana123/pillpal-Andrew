@@ -24,6 +24,16 @@
         {{ medicationintake_form.as_p }}
         <input type="submit" class="btn" value="I took my medication">
     </form>
+
+    {% if medication.dose_taken %}
+
+        <div class="card-panel teal-text center-align">All caught up for now. Next dose is in {{ medication.dose_taken.1}} hours.</div>
+
+    {% else %}
+        <div class="card-panel red-text center-align">You missed your dose! It happens, try to take it as soon as you can.</div>
+    {% endif %}
+
+
     <table class="striped">
         <thead>
             <tr><th>Medication</th><th>Date</th></tr>
