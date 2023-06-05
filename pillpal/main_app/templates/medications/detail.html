@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Medication Details</h1>
+
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ medication.name }}</span>
+        <p>Dose: {{ medication.dose }}</p>
+        <p>Frequency (in hrs between doses): {{ medication.frequency|linebreaks }}</p>
+        <p>Warnings: {{ medication.warnings|linebreaks }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{% url 'medications_update' medication.id %}">Update</a>
+        <a href="{% url 'medications_delete' medication.id %}">delete</a>
+
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+  <!-- New Markup Below -->
+{% endblock %}
