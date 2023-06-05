@@ -13,6 +13,8 @@
         <p>Warnings: {{ medication.warnings|linebreaks }}</p>
       </div>
       <div class="card-action">
+        <a href="{% url 'medications_update' medication.id %}">Update</a>
+        <a href="{% url 'medications_delete' medication.id %}">delete</a>
 
       </div>
     </div>
