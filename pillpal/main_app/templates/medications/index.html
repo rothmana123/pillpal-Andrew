@@ -9,6 +9,13 @@
       <div class="card-content">
         <span class="card-title">{{ medication.name }}</span>        
         <p>Warnings: {{ medication.warnings|linebreaks }}</p>
+        {% if medication.dose_taken %}
+
+        <div class="card-panel teal-text center-align">All caught up for now. Next dose is in {{ medication.dose_taken.1}} hours.</div>
+
+        {% else %}
+            <div class="card-panel red-text center-align">You missed your dose! It happens, try to take it as soon as you can.</div>
+        {% endif %}
       </div>
     </div>
   </a>
