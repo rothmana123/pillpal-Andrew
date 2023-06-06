@@ -51,5 +51,56 @@
   </div>
 </div>
   <!-- New Markup Below -->
- 
+
+  <hr>
+  <div class="row">
+      <div class="col s6">
+          <h3>Pharmacies with {{ medication.name }} in stock:</h3>
+          {% if medication.pharmacies.count %}
+              {% for pharmacy in medication.pharmacies.all %}
+                  <div class="card">
+                      <div class="card-content">
+                          <span class="card-title">
+                               {{ pharmacy.name }}
+                          </span>
+                      </div>
+                      <div class="card-action">
+                          <form action="{% url 'unassoc_pharmacy' medication.id pharmacy.id %}" method="POST">
+                              {% csrf_token %}
+                              <button type="submit" class="btn">Remove</button>
+                          </form>
+                      </div>
+                  </div>
+              {% endfor %}
+          {% else %}
+              <h5>No pharmacies with {{ medication.name }} in stock &#x1F48A</h5>
+          {% endif %}
+      </div>
+  <!-- Available toys will come after this line -->
+      <div class="col s6">
+          <h3>Preferred pharmacies to call and check stock:</h3>
+          {% if pharmacies.count %}
+              {% for pharmacy in pharmacies.all %}
+                  <div class="card">
+                      <div class="card-content">
+                          <span class="card-title">
+                              {{ pharmacy.name }}
+                          </span>
+                      </div>
+                      <div class="card-action">
+                          <form action="{% url 'assoc_pharmacy' medication.id pharmacy.id %}" method="POST">
+                              {% csrf_token %}
+                              <button type="submit" class="btn">Add</button>
+                          </form>
+                      </div>
+                  </div>
+              {% endfor %}
+          {% else %}
+              <h5>{{medication.name}} is available at all pharmacies</h5>
+              <p>{{ pharmacy_list }}</p>
+              
+          {% endif %}
+      </div>
+  </div>
+
 {% endblock %}
