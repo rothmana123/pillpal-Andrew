@@ -10,8 +10,16 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class Pharmacy(models.Model):
+    name = models.CharField(max_length=150)
+    address = models.CharField(max_length=200)
+    phoneNumber = models.CharField(max_length=12)
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('pharmacies_detail', kwargs={'pk': self.id})
 
 
 
