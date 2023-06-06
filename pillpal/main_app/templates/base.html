@@ -12,11 +12,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
+    <style>
+    .centered-image {
+        display: inline-block;
+        /* Add animation property */
+        animation: spin 3s linear infinite;
+        width: 10%;
+      }
+      /* Define the animation */
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
     <header class="navbar-fixed">
         <nav>
             <div class="nav-wrapper teal lighten-1">
                 <ul>
-                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;PillPal</a></li>
+                    <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;PillPal <img class="centered-image"src="https://i.imgur.com/4UNNfuS.png" /></a></li>
+                    
                 </ul>
                 <ul class="right">
                     <li><a href="{% url 'about' %}">About</a></li>
