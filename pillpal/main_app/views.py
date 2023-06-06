@@ -28,11 +28,13 @@ def medications_index(request):
 def medications_detail(request, medication_id):
     medication = Medication.objects.get(id=medication_id)
     medicationintake_form = MedicationIntakeForm()
-  
+    id_list = medication.pharmacies.all().values_list('id') 
+    pharmacies_medication_doesnt_have = Pharmacy.objects.exclude(id__in=id_list)
+
     context = {
         'medication': medication,
         'medicationintake_form': medicationintake_form,
-
+        'pharmacies': pharmacies_medication_doesnt_have,
     }
     return render(request, 'medications/detail.html', context)
 

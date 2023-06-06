@@ -21,14 +21,13 @@ class Pharmacy(models.Model):
     def get_absolute_url(self):
         return reverse('pharmacies_detail', kwargs={'pk': self.id})
 
-
-
 class Medication(models.Model):
     name = models.CharField(max_length=150)
     dose = models.CharField(max_length=150)
     frequency = models.PositiveBigIntegerField(help_text='Enter the frequency in hours')
     warnings = models.TextField(max_length=300)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    pharmacies = models.ManyToManyField(Pharmacy)
 
     def __str__(self):
         return f'{self.name}({self.id})'
@@ -48,29 +47,6 @@ class Medication(models.Model):
             return True, round(time_until_next_dose.total_seconds()/3600, 1)
         else: 
             return False
-    
-    # class Meta:
-    #     ordering = ['medication.dose_taken']
-
-        # # get current date and time
-        # now = datetime.now()
-
-        # # convert it to a timestamp (which is a float)
-        # timestamp = datetime.timestamp(now)
-
-        # # convert the timestamp to an integer
-        # timestamp_int = int(timestamp)
-        # print(f'This is timestamp_int: {timestamp_int}')
-        # timestamp_float = datetime.timestamp(next_dose_timestamp)
-        # print(f'This is timestamp_float: {timestamp_float}')
-        # next_dose_timestamp_int = int(timestamp_float)
-        
-        # time_until_next_dose = next_dose_timestamp_int - timestamp_int
-        # if time_until_next_dose < 1200:
-        #     return True
-        # else:
-        #     return False
- 
     
 class MedicationIntake(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
