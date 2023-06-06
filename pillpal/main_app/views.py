@@ -4,7 +4,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import Medication, MedicationIntake
+from .models import *
 from .forms import MedicationIntakeForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -72,6 +72,37 @@ class MedicationUpdate(LoginRequiredMixin, UpdateView):
 class MedicationDelete(LoginRequiredMixin, DeleteView):
     model = Medication
     success_url = '/medications/'
+
+class PharmacyList(LoginRequiredMixin, ListView):
+   model = Pharmacy
+
+class PharmacyDetail(LoginRequiredMixin, DetailView):
+   model = Pharmacy
+
+class PharmacyCreate(LoginRequiredMixin, CreateView):
+   model = Pharmacy
+   fields = ['name', 'address', 'phoneNumber']
+
+class PharmacyUpdate(LoginRequiredMixin, UpdateView):
+   model = Pharmacy
+   fields = ['name', 'address', 'phoneNumber']
+
+class PharmacyDelete(LoginRequiredMixin, DeleteView):
+   model = Pharmacy
+   success_url = '/pharmacies/'
+
+@login_required
+def assoc_pharmacy(request, medication_id, pharmacy_id):
+   Medication.objects.get(id=medication_id).pharmacies.add(pharmacy_id)
+   return redirect('detail', medication_id=medication_id)
+
+@login_required
+def unassoc_pharmacy(request, medication_id, pharmacy_id):
+   Medication.objects.get(id=medication_id).pharmacies.remove(pharmacy_id)
+   return redirect('detail', medication_id=medication_id)
+
+
+
 
 @login_required
 def add_medicationintake(request, medication_id):
