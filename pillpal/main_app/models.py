@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 class Medication(models.Model):
     name = models.CharField(max_length=150)
     dose = models.CharField(max_length=150)
-    frequency = models.PositiveBigIntegerField()
+    frequency = models.PositiveBigIntegerField(help_text='Enter the frequency in hours')
     warnings = models.TextField(max_length=300)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
