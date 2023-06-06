@@ -5,7 +5,7 @@
 
 {% for medication in medications %}
 <a href="{% url 'detail' medication.id %}">
-    <div class="card">
+    <div class="card hoverable">
       <div class="card-content black-text">
         <span class="card-title">{{ medication.name }}</span>        
         <p>Warnings: {{ medication.warnings|linebreaks }}</p>
