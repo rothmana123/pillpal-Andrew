@@ -1,7 +1,9 @@
 from django.db import models
 from django.urls import reverse
-from datetime import date, timezone
+from datetime import date, timedelta, datetime
 from django.utils.timezone import now
+from django.utils import timezone
+from time import localtime
 
 from django.contrib.auth.models import User
 
@@ -21,6 +23,37 @@ class Medication(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'medication_id': self.id})
     
+    def dose_taken(self):
+        # return self.medicationintake_set.filter(timestamp__lte=now()).count() 
+        last_dose = self.medicationintake_set.latest('timestamp')
+        next_dose_timestamp = last_dose.timestamp + timedelta(hours=self.frequency)
+        current_time = timezone.localtime(timezone.now())
+        time_until_next_dose = next_dose_timestamp - current_time
+        print(f'This is time_until_next_dose: {time_until_next_dose}')
+        print(f'This is time_until_next_dose total seconds: {time_until_next_dose.total_seconds()}')
+        if time_until_next_dose.total_seconds() > 1850:
+            return True, int(time_until_next_dose.total_seconds()/3600)
+        else: 
+            return False
+        # # get current date and time
+        # now = datetime.now()
+
+        # # convert it to a timestamp (which is a float)
+        # timestamp = datetime.timestamp(now)
+
+        # # convert the timestamp to an integer
+        # timestamp_int = int(timestamp)
+        # print(f'This is timestamp_int: {timestamp_int}')
+        # timestamp_float = datetime.timestamp(next_dose_timestamp)
+        # print(f'This is timestamp_float: {timestamp_float}')
+        # next_dose_timestamp_int = int(timestamp_float)
+        
+        # time_until_next_dose = next_dose_timestamp_int - timestamp_int
+        # if time_until_next_dose < 1200:
+        #     return True
+        # else:
+        #     return False
+ 
     
 class MedicationIntake(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
