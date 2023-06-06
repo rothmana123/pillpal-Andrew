@@ -5,14 +5,26 @@
     h1 {
       text-align: center;
       margin-top: 250px;
+      animation: fade-in 2s ease-in-out forwards;
+      opacity: 0;
     }
-
 
     .about-info{
         display: flex;
         justify-content: center;
-
+        animation: fade-in 2s ease-in-out forwards;
+        opacity: 0;
     }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
 </style>
 <h1>Home</h1>
 <p class="flow-text about-info">Welcome to PillPal - your personal medication management companion!</p>
