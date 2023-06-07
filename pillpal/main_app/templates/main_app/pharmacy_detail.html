@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Pharmacy Details</h1>
+<h1 class="teal-text text-darken-2">Pharmacy Details</h1>
 
 <div class="row">
   <div class="col s6 col-offset-3">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{ pharmacy.name }}</span>
+        <span class="card-title teal-text text-darken-1">{{ pharmacy.name }}</span>
         <p>Address: {{ pharmacy.address }}</p>
         <p>Phone Number: {{ pharmacy.phoneNumber }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'pharmacies_update' pharmacy.id %}">Edit</a>
-        <a href="{% url 'pharmacies_delete' pharmacy.id %}">Delete</a>
+        <a href="{% url 'pharmacies_update' pharmacy.id %}" class="teal-text text-darken-1">Edit</a>
+        <a href="{% url 'pharmacies_delete' pharmacy.id %}" class="red-text text-darken-1">Delete</a>
       </div>
     </div>
   </div>
