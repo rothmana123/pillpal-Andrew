@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="teal-text">Medication Details</h1>
+<h1 class="teal-text text-darken-2">Medication Details</h1>
 
 <div class="row">
   <div class="col s6">
@@ -13,8 +13,8 @@
         <p>Warnings: {{ medication.warnings|linebreaks }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'medications_update' medication.id %}">Update</a>
-        <a href="{% url 'medications_delete' medication.id %}">delete</a>
+        <a href="{% url 'medications_update' medication.id %}" class="teal-text text-darken-1">Update</a>
+        <a href="{% url 'medications_delete' medication.id %}" class="red-text text-darken-1">delete</a>
 
       </div>
     </div>
@@ -58,14 +58,15 @@
   <hr>
   <div class="row">
       <div class="col s6">
-          <h3>Pharmacies with {{ medication.name }} in stock:</h3>
+          <h3 class="teal-text accent-4">Pharmacies with {{ medication.name }} in stock:</h3>
           {% if medication.pharmacies.count %}
               {% for pharmacy in medication.pharmacies.all %}
                   <div class="card">
                       <div class="card-content">
-                          <span class="card-title">
+                          <span class="card-title teal-text accent-4">
                                {{ pharmacy.name }}
-                          </span>
+                            </span>
+                            Phone Number: {{ pharmacy.phoneNumber }}
                       </div>
                       <div class="card-action">
                           <form action="{% url 'unassoc_pharmacy' medication.id pharmacy.id %}" method="POST">
@@ -81,14 +82,15 @@
       </div>
   <!-- Available toys will come after this line -->
       <div class="col s6">
-          <h3>Preferred pharmacies to call and check stock:</h3>
+          <h3 class="teal-text accent-4">Preferred pharmacies to call and check stock:</h3>
           {% if pharmacies.count %}
               {% for pharmacy in pharmacies.all %}
                   <div class="card">
                       <div class="card-content">
-                          <span class="card-title">
+                          <span class="card-title teal-text accent-4">
                               {{ pharmacy.name }}
                           </span>
+                          Phone Number: {{ pharmacy.phoneNumber }}
                       </div>
                       <div class="card-action">
                           <form action="{% url 'assoc_pharmacy' medication.id pharmacy.id %}" method="POST">
