@@ -28,7 +28,7 @@ Pill Pal - No Frills App for Tracking Medications
 ![Add a Medication](https://i.imgur.com/dIkDre8.png)
 
 **View the Medications**
-![All the Medications](https://i.imgur.com/Yh2DuZA.png)
+![All the Medications](https://i.imgur.com/FJerMdo.png)
 
 **Medication Details**
 ![Medication Details](https://i.imgur.com/7iSniH2.png)
