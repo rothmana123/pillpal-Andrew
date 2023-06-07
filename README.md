@@ -15,14 +15,8 @@ Pill Pal - No Frills App for Tracking Medications
 **About Page**
 ![About](https://i.imgur.com/fZkt1YX.png)
 
-**View the Medications**
-![All the Medications](https://i.imgur.com/Yh2DuZA.png)
-
-**Add a Medication**
-![Add a Medication](https://i.imgur.com/dIkDre8.png)
-
-**Medication Details**
-![Medication Details](https://i.imgur.com/7iSniH2.png)
+**Add a Pharmacy**
+![Add a Pharmacy](https://i.imgur.com/c7nsPQO.png)
 
 **View the Pharmacies**
 ![All the Pharmacies](https://i.imgur.com/BGF1mX1.png)
@@ -30,10 +24,14 @@ Pill Pal - No Frills App for Tracking Medications
 **Pharmacy Details**
 ![Pharmcacy Details](https://i.imgur.com/phHbatO.png)
 
-**Add a Pharmacy Profile**
-![Add a Pharmacy]
+**Add a Medication**
+![Add a Medication](https://i.imgur.com/dIkDre8.png)
 
+**View the Medications**
+![All the Medications](https://i.imgur.com/Yh2DuZA.png)
 
+**Medication Details**
+![Medication Details](https://i.imgur.com/7iSniH2.png)
 
 ## Technologies Used
 
