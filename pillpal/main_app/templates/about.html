@@ -3,6 +3,21 @@
 {% block content %}
 
 <style>
+    .fade-in {
+    animation: fade-in 2s ease-in-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+
         .centered-image {
       display: inline-block;
       width: 8%;
@@ -17,10 +32,10 @@
     }
 </style>
 
-  <h1>About PillPal <img class="centered-image"src="https://i.imgur.com/4UNNfuS.png" /> </h1>
+  <h1 class="fade-in teal-text text-darken-1">About PillPal <img class="centered-image"src="https://i.imgur.com/4UNNfuS.png" /> </h1>
   <hr />
 
-  <p class="flow-text">
+  <p class="flow-text fade-in">
     
 PillPal is a convenient and user-friendly app designed to help you stay on top of your medications and improve your medication adherence. With PillPal, you can easily track your medications, receive timely reminders for dosage schedules, and access contact information for your preferred pharmacy to call and check stock or request refills.
 Managing multiple medications can be challenging, but PillPal simplifies the process. Whether you're juggling prescriptions for chronic conditions, maintaining a daily vitamin regimen, or simply need a reminder for occasional medications, PillPal has got you covered.

@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="teal-text">Medication List</h1>
+<h1 class="teal-text text-darken-2">Medication List</h1>
 
 {% for medication in medications %}
 <a href="{% url 'detail' medication.id %}">
     <div class="card hoverable">
       <div class="card-content black-text">
-        <span class="card-title">{{ medication.name }}</span>        
+        <span class="card-title teal-text text-darken-1">{{ medication.name }}</span>        
         <p>Warnings: {{ medication.warnings|linebreaks }}</p>
         {% if medication.dose_taken %}
 
